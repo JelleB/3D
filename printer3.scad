@@ -42,7 +42,8 @@ ZaxisOffset=42 + thickness + 1;
 ZaxisSpread=150; //how far apart are the two Z-axis rails?
 AxisOffsetBack=AxisOffset + Rz + ZaxisOffset + 1;
 AxisPlaneDistance=18;
-X2offset=50;
+X2offset=50; //determines how far back(Y) from the center of the machine the axes are placed
+Ztravel=50;  //maximum travel of the Z-stage (mounted on the X2 stage)
 rimBottom=  2*AxisOffset + AxisPlaneDistance;
 
 pulleyWidth= 21; //effective (max) width of the belt over the pulleys
@@ -55,6 +56,9 @@ windowSideX = Y/2;
 windowSideY = Z;
 windowTopX = X - 2* AxisOffset - 2*Rx - 2*bevel ;
 windowTopY = Y - AxisOffset -AxisOffsetBack - 2*Ry - 2*bevel;
+
+tableHeight= 2*AxisOffset + AxisPlaneDistance + 2* thickness2 + thickness; //
+
 
 ZaxisLenght=Z-rimBottom-3*thickness;
 
@@ -205,31 +209,43 @@ module X2axes(add=true)
 {
 	if(add==true)
 	{
-		translate([-thickness,Y/2 + X2offset,Z/2 - 50])
+		translate([-thickness,Y/2 + X2offset,tableHeight + Ztravel + R2x])
 			rotate([0, 90, 0])
 				cylinder(r=R2x, h=X + 2* thickness, $fn=36);
-		translate([-thickness,Y/2 + X2offset,Z/2 + 50])
+		translate([-thickness,Y/2 + X2offset,Z -Ztravel - R2x])
 			rotate([0, 90, 0])
 				cylinder(r=R2x, h=X + 2* thickness, $fn=36);
 	}
 	else
 	{
-		translate([-thickness -tol,Y/2 + X2offset,Z/2 - 50])
+		translate([-thickness -tol,Y/2 + X2offset,tableHeight + Ztravel + R2x])
 			rotate([0, 90, 0])
 				cylinder(r=R2x, h=X + 2* thickness + 2*tol, $fn=36);
-		translate([-thickness -tol ,Y/2 + X2offset,Z/2 + 50])
+		translate([-thickness -tol ,Y/2 + X2offset,Z -Ztravel - R2x])
 			rotate([0, 90, 0])
 				cylinder(r=R2x, h=X + 2* thickness + 2*tol, $fn=36);
 	}		
 }
-module Yaxes()
+module Yaxes(add=true)
 {
-	translate([X-AxisOffset,0,AxisOffset])
-		rotate([-90, 0, 0])
-			cylinder(r=Ry, h=Y - AxisOffsetBack + AxisOffset, $fn=36);
-	translate([AxisOffset + thickness,0,AxisOffset])
-		rotate([-90, 0, 0])
-			cylinder(r=Ry, h=Y - AxisOffsetBack + AxisOffset, $fn=36);		
+	if(add==true)
+	{
+		translate([X-AxisOffset,0,AxisOffset])
+			rotate([-90, 0, 0])
+				cylinder(r=Ry, h=Y - AxisOffsetBack + AxisOffset, $fn=36);
+		translate([AxisOffset + thickness,0,AxisOffset])
+			rotate([-90, 0, 0])
+				cylinder(r=Ry, h=Y - AxisOffsetBack + AxisOffset, $fn=36);		
+	}
+	else
+	{
+		translate([X-AxisOffset,-2*thickness,AxisOffset])
+			rotate([-90, 0, 0])
+				cylinder(r=Rbearing, h=Y - AxisOffsetBack + AxisOffset + 4* thickness, $fn=36);
+		translate([AxisOffset + thickness,-2*thickness, AxisOffset])
+			rotate([-90, 0, 0])
+				cylinder(r=Rbearing, h=Y - AxisOffsetBack + AxisOffset + 4* thickness, $fn=36);
+	}
 }
 module Zaxes()
 {
@@ -269,13 +285,17 @@ module rimPanel(add=true)
 				// fancyFeet([0,0,tol], X , [0,0,0], true);
 			}	
 			//bearing holes
-			bearingAssembly(AxisOffset + thickness, tol, AxisOffset, [90,45,0], 1);
-			bearingAssembly(X-AxisOffset, tol, AxisOffset , [90,45,0], 1);
+			// bearingAssembly(AxisOffset + thickness, tol, AxisOffset, [90,45,0], 1);
+			// bearingAssembly(X-AxisOffset, tol, AxisOffset , [90,45,0], 1);
+			Yaxes(false); //will cut out the bearing holes, not screw holes for covers.
 			
 			//the cut-out portion of the tSlots
 			tSlotsAndTabs([0,0,0], X , [90,0,0], 2, false,add, add);
 			tSlotsAndTabs([0,0-thickness,rimBottom], X, [-90,0,0], 2, false, add, add);
 			
+			//single tSlot in the side
+			translate([thickness,0,thickness + rimBottom/1.5]) rotate([90,90,0]) tSlot(add);
+			translate([X-thickness,0,thickness + rimBottom/1.5]) rotate([90,90,180]) tSlot(add);
 			//cutout in the sides so two prongs remain.
 			translate([0,-thickness -2* tol,thickness])
 			{	
@@ -348,41 +368,43 @@ module sidePanel(add=true)
 		{
 			translate([-tol,0,tol]) union()
 			{
-				cube([thickness-2* tol,Y,Z]);
+				difference()
+				{
+					cube([thickness-2* tol,Y,Z]);
+					//cut out window
+					//translate([rimBack+bevel,rimBottom+bevel, -tol])
+					#translate([-0.5*thickness, -Y/2 + X2offset - 2* R2x,rimBottom+bevel])
+					{	
+						minkowski()
+						{					
+							rotate([0,90,0]) cylinder(r=bevel, h= thickness, $fn=36);
+							cube([2* thickness, Y-2*bevel, Z ], center=false);
+						}
+					}
+				}	
 				
 				//slanted frontside.				
 				translate([0,-thickness,0]) 
 					cube([thickness, thickness, rimBottom]);
-				translate([0,-thickness,0]) 
-					minkowski()
-					{	
-						intersection()
-						{
-							translate([0,0,rimBottom -diBondRadius])
-								rotate([45 +180,0,0]) 
-									cube([thickness,1.5*rimBottom-bevel,rimBottom-bevel]);
-									
-									
-							translate([0,-2*rimBottom,diBondRadius]) cube([thickness,2*rimBottom,rimBottom]);
-						}
-						rotate([0,90,0]) cylinder(r=diBondRadius, h= tol/10, $fn=36);	
+				translate([0,-thickness,0]) 			
+					intersection()
+					{
+						translate([0,0,rimBottom])
+							rotate([45 +180,0,0]) 
+								cube([thickness,1.5*rimBottom,rimBottom]);
+								
+								
+						translate([0,-2*rimBottom,0]) 
+							cube([thickness,2*rimBottom,rimBottom]);
 					}
 				//tabs and tSlots at the bottomPanel
 				tSlotsAndTabs([0,-rimBottom -4 * thickness,tol], Y + rimBottom + 8 * thickness, [90,0,90], 3, true, !add, add);
 				//tabs and tSlots at the backPanel
 				tSlotsAndTabs([0,Y,0], Z, [0,-90,180], 3, true, !add, add);
-					
+				//tabs and tSlots at the rimtop
+				#tSlotsAndTabs([thickness,0,rimBottom -tol], Y - ZaxisOffset , [-90,0,90], 1, true, !add, add);	
 			}	
-			//cut out window
-			//translate([rimBack+bevel,rimBottom+bevel, -tol])
-			translate([-0.5*thickness,0 ,rimBottom+bevel])
-			{	
-				minkowski()
-				{					
-					rotate([0,90,0]) cylinder(r=bevel, h= thickness, $fn=36);
-					cube([2* thickness, windowSideX, windowSideY, ], center=false);
-				}
-			}
+
 			//bearing holes
 			// bearingAssembly(-tol, Y-AxisOffsetBack, AxisOffset+AxisPlaneDistance,[90,45,90], 1);
 			// bearingAssembly(-tol, AxisOffset, AxisOffset+AxisPlaneDistance,[90,-45,90] , 1);
@@ -508,7 +530,7 @@ module proj()
 	}
 }
 
-// %frontPanel(true);
+// frontPanel(true);
 // midPanel(true);
 // backPanel();
 // leftPanel(true);
