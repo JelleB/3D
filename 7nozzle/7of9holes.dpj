@@ -1,0 +1,332 @@
+[DeskProto Project]
+Version = 6.0
+Edition = Expert
+CADFile = <none>
+CADFileUnit = 0
+FlipNormals = 0
+SkipBackfaces = 0
+NumberOfParts = 1
+ActivePartIndex = 0
+SaveToolPaths = 0
+
+[Part0]
+Name = part
+Machine = Seron-emc2
+OperationsType = 0
+ScaleX = 1.000000
+ScaleY = 1.000000
+ScaleZ = 1.000000
+MirrorX = 0
+MirrorY = 0
+MirrorZ = 0
+RotationX = 0.000000
+RotationY = 0.000000
+RotationZ = 0.000000
+InverseMilling = 0
+CentreAroundRotationAxis = 0
+SegmentMethod = 0
+SegmentMinimumX = 0.000000
+SegmentMinimumY = 0.000000
+SegmentMinimumZ = 0.000000
+SegmentMaximumX = 0.000000
+SegmentMaximumY = 0.000000
+SegmentMaximumZ = 0.000000
+SegmentMinimumAngle = 0.000000
+SegmentMaximumAngle = 360.000000
+DisplayRelativeSegmentValues = 0
+AmbientlevelMethod = 0
+AmbientlevelZ = 0.000000
+TranslationMethodX = 1
+TranslationMethodY = 1
+TranslationMethodZ = 1
+TranslationCustomX = 0.000000
+TranslationCustomY = 0.000000
+TranslationCustomZ = 0.000000
+WindowLayout = 0
+NumberOfOperations = 5
+SupportBlockType = 0
+
+[Part0 Operation0]
+Name = fixeren 3mm
+Cutter = Ball nose, radius 3 = diameter 6 mm
+Visible = 1
+Feedrate = 1000.000000
+Spindlespeed = 8000
+ChainPart = NULL
+ChainOperation = NULL
+UseRoughingLayers = 0
+RoughingLayerMethod = 0
+RoughingLayer = 25.000000
+UseRoughingRamping = 0
+RoughingRampingAngle = 5.000000
+OperationType = 0
+2DGeometryFileName = C:\Users\Jelle\OpenSCAD projecten\3Dprinters\7nozzle\Fixeren 3mm.dxf
+RoughingRiseFreeMovement = 1
+zLevelPenUp = 5.000000
+zLevelPenDown = -6.000000
+PlungeRate = 100
+RelativeToPart = 0
+ProjectionPrecision = 1.000000
+ScaleX = 1.000000
+ScaleY = 1.000000
+MirrorX = 0
+MirrorY = 0
+TranslateX = 0.000000
+TranslateY = 0.000000
+zRotation = 0.000000
+
+[Part0 Operation1]
+Name = M6 hole 3mm
+Cutter = Flat tip, radius 1.5 = diameter 3 mm
+Visible = 1
+Feedrate = 1000.000000
+Spindlespeed = 8000
+ChainPart = NULL
+ChainOperation = NULL
+UseRoughingLayers = 0
+RoughingLayerMethod = 0
+RoughingLayer = 10.000000
+UseRoughingRamping = 0
+RoughingRampingAngle = 5.000000
+OperationType = 0
+2DGeometryFileName = C:\Users\Jelle\OpenSCAD projecten\3Dprinters\7nozzle\6mmGat.dxf
+RoughingRiseFreeMovement = 1
+zLevelPenUp = 5.000000
+zLevelPenDown = -6.000000
+PlungeRate = 100
+RelativeToPart = 0
+ProjectionPrecision = 1.000000
+ScaleX = 1.000000
+ScaleY = 1.000000
+MirrorX = 0
+MirrorY = 0
+TranslateX = 0.000000
+TranslateY = 0.000000
+zRotation = 0.000000
+
+[Part0 Operation2]
+Name = M6 Tapping op
+Cutter = Ball nose, radius 5 = diameter 10 mm
+Visible = 1
+Feedrate = 1000.000000
+Spindlespeed = 8000
+ChainPart = NULL
+ChainOperation = NULL
+UseRoughingLayers = 0
+RoughingLayerMethod = 0
+RoughingLayer = 30.000000
+UseRoughingRamping = 0
+RoughingRampingAngle = 5.000000
+OperationType = 0
+2DGeometryFileName = C:\Users\Jelle\OpenSCAD projecten\3Dprinters\7nozzle\M6tappen.dxf
+RoughingRiseFreeMovement = 1
+zLevelPenUp = 5.000000
+zLevelPenDown = 0.000000
+PlungeRate = 100
+RelativeToPart = 0
+ProjectionPrecision = 1.000000
+ScaleX = 1.000000
+ScaleY = 1.000000
+MirrorX = 0
+MirrorY = 0
+TranslateX = 0.000000
+TranslateY = 0.000000
+zRotation = 0.000000
+
+[Part0 Operation3]
+Name = 7holes
+Cutter = Flat tip, radius 0.5 = diameter 1 mm
+Visible = 1
+Feedrate = 300.000000
+Spindlespeed = 8000
+ChainPart = NULL
+ChainOperation = NULL
+UseRoughingLayers = 0
+RoughingLayerMethod = 0
+RoughingLayer = 4.000000
+UseRoughingRamping = 0
+RoughingRampingAngle = 5.000000
+OperationType = 0
+2DGeometryFileName = C:\Users\Jelle\OpenSCAD projecten\3Dprinters\7nozzle\7MagicHoles.dxf
+RoughingRiseFreeMovement = 1
+zLevelPenUp = 5.000000
+zLevelPenDown = -1.000000
+PlungeRate = 100
+RelativeToPart = 0
+ProjectionPrecision = 1.000000
+ScaleX = 1.000000
+ScaleY = 1.000000
+MirrorX = 0
+MirrorY = 0
+TranslateX = 0.000000
+TranslateY = 0.000000
+zRotation = 0.000000
+
+[Part0 Operation4]
+Name = 9holes
+Cutter = Flat tip, radius 1 = diameter 2 mm
+Visible = 1
+Feedrate = 300.000000
+Spindlespeed = 8000
+ChainPart = NULL
+ChainOperation = NULL
+UseRoughingLayers = 0
+RoughingLayerMethod = 0
+RoughingLayer = 6.000000
+UseRoughingRamping = 0
+RoughingRampingAngle = 5.000000
+OperationType = 0
+2DGeometryFileName = C:\Users\Jelle\OpenSCAD projecten\3Dprinters\7nozzle\9MagicHoles.dxf
+RoughingRiseFreeMovement = 1
+zLevelPenUp = 5.000000
+zLevelPenDown = -1.000000
+PlungeRate = 100
+RelativeToPart = 0
+ProjectionPrecision = 1.000000
+ScaleX = 1.000000
+ScaleY = 1.000000
+MirrorX = 0
+MirrorY = 0
+TranslateX = 0.000000
+TranslateY = 0.000000
+zRotation = 0.000000
+
+[Part0 View0]
+Name = 
+ShowName = 1
+ShowOrientator = 1
+ShowOriginOrientator = 1
+ShowGeometryWireframe = 0
+RemoveHiddenLines = 0
+ShowGeometryRendered = 1
+ShowDownwardFaces = 0
+ShowGeometryPoints = 0
+ShowSegment = 1
+ShowSegmentTranslucent = 0
+ShowWorkingArea = 0
+RotationX = -20.808176
+RotationY = -0.221783
+RotationZ = 16.740061
+PanningX = 65.195051
+PanningY = 34.522654
+Zooming = 214.358881
+
+[Part0 View0 Operation0]
+Show2DContours = 1
+
+[Part0 View0 Operation1]
+Show2DContours = 1
+
+[Part0 View0 Operation2]
+Show2DContours = 1
+
+[Part0 View0 Operation3]
+Show2DContours = 1
+
+[Part0 View0 Operation4]
+Show2DContours = 1
+
+[Part0 View1]
+Name = 
+ShowName = 1
+ShowOrientator = 1
+ShowOriginOrientator = 1
+ShowGeometryWireframe = 0
+RemoveHiddenLines = 0
+ShowGeometryRendered = 1
+ShowDownwardFaces = 0
+ShowGeometryPoints = 0
+ShowSegment = 1
+ShowSegmentTranslucent = 0
+ShowWorkingArea = 0
+RotationX = -75.000000
+RotationY = 30.000000
+RotationZ = 7.600000
+PanningX = 0.000000
+PanningY = 0.000000
+Zooming = 100.000000
+
+[Part0 View1 Operation0]
+Show2DContours = 1
+
+[Part0 View1 Operation1]
+Show2DContours = 1
+
+[Part0 View1 Operation2]
+Show2DContours = 1
+
+[Part0 View1 Operation3]
+Show2DContours = 1
+
+[Part0 View1 Operation4]
+Show2DContours = 1
+
+[Part0 View2]
+Name = 
+ShowName = 1
+ShowOrientator = 1
+ShowOriginOrientator = 1
+ShowGeometryWireframe = 0
+RemoveHiddenLines = 0
+ShowGeometryRendered = 1
+ShowDownwardFaces = 0
+ShowGeometryPoints = 0
+ShowSegment = 1
+ShowSegmentTranslucent = 0
+ShowWorkingArea = 0
+RotationX = -75.000000
+RotationY = 30.000000
+RotationZ = 7.600000
+PanningX = 0.000000
+PanningY = 0.000000
+Zooming = 100.000000
+
+[Part0 View2 Operation0]
+Show2DContours = 1
+
+[Part0 View2 Operation1]
+Show2DContours = 1
+
+[Part0 View2 Operation2]
+Show2DContours = 1
+
+[Part0 View2 Operation3]
+Show2DContours = 1
+
+[Part0 View2 Operation4]
+Show2DContours = 1
+
+[Part0 View3]
+Name = 
+ShowName = 1
+ShowOrientator = 1
+ShowOriginOrientator = 1
+ShowGeometryWireframe = 0
+RemoveHiddenLines = 0
+ShowGeometryRendered = 1
+ShowDownwardFaces = 0
+ShowGeometryPoints = 0
+ShowSegment = 1
+ShowSegmentTranslucent = 0
+ShowWorkingArea = 0
+RotationX = -75.000000
+RotationY = 30.000000
+RotationZ = 7.600000
+PanningX = 0.000000
+PanningY = 0.000000
+Zooming = 100.000000
+
+[Part0 View3 Operation0]
+Show2DContours = 1
+
+[Part0 View3 Operation1]
+Show2DContours = 1
+
+[Part0 View3 Operation2]
+Show2DContours = 1
+
+[Part0 View3 Operation3]
+Show2DContours = 1
+
+[Part0 View3 Operation4]
+Show2DContours = 1
