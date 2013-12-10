@@ -373,7 +373,7 @@ module sidePanel(add=true)
 					cube([thickness-2* tol,Y,Z]);
 					//cut out window
 					//translate([rimBack+bevel,rimBottom+bevel, -tol])
-					#translate([-0.5*thickness, -Y/2 + X2offset - 2* R2x,rimBottom+bevel])
+					translate([-0.5*thickness, -Y/2 + X2offset - 2* R2x,rimBottom+bevel])
 					{	
 						minkowski()
 						{					
@@ -516,13 +516,14 @@ module bottomPanel(add=true)
 //projections
 module proj()
 {
-	projection(cut=true) 
+	// projection(cut=true) 
 	{
 		translate([0,0,-2])
 		{
-			// translate([0,0,thickness -tol]) rotate([-90,0,0]) frontPanel(true); 
+			translate([0,0,thickness -tol]) rotate([-90,0,0]) frontPanel(true); 
+			translate([0, 2* rimBottom + 2* thickness, -Y + AxisOffsetBack - AxisOffset + thickness])  rotate([90, 0,0]) midPanel(true);
 			// translate([0,Z + 2* thickness,-tol])  rotate([90, 0,-180]) translate([-X, -Y,0]) backPanel(true);
-			translate([Y + X + 4* thickness,0,thickness -tol]) rotate([-90,0,0]) rotate([0,0,90]) leftPanel(true);
+			// translate([Y + X + 4* thickness,0,thickness -tol]) rotate([-90,0,0]) rotate([0,0,90]) leftPanel(true);
 			// translate([X + 4* thickness, Z + 2* thickness, thickness -tol]) rotate([-90,0,0]) rotate([0,0,-90]) translate([-X,0,0]) rightPanel(true);
 			// translate([X + Y + 4* thickness + 4* thickness, 1.5* thickness, -tol -Z]) rotate([0,0,0]) topPanel(add=true);
 			// translate([X + Y + 4* thickness + 4* thickness, Y + 6* thickness ,-tol - rimBottom + thickness]) rotate([0,0,0]) bottomPanel(add=true);
