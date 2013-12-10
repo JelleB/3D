@@ -1,9 +1,7 @@
 //printer1.scad 3D printer with parallel X and Y axes. The Built platform is cantilevered and moved along the Z-axis in the back.
 /* copyright 2013 Jelle Boomstra, jelle@protospace.nl*/
-/* All the creative works in this distribution are licensed to you under the terms of the Creative Commons Attribution Share Alike (CC-BY-SA, http://creativecommons.org/licenses/by-sa/3.0/) license, with the following exception: 
-None of the rights granted by said license are granted to Ultimaker BV, including all of its subsidiaries, past present or future employees or owners. 
-This exception will be waived after Ultimaker releases their source drawings under an open source license which does not forbid commercial use. 
-*/
+/* All the creative works in this distribution are licensed to you under the terms of the GNU AFFERO GENERAL PUBLIC LICENSE. */
+/* Details can be found in the file 'LICENSE'.*/
 
 use <nema17.scad> ;
 use <tSlotsAndTabs.scad>;
